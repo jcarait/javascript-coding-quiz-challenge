@@ -43,10 +43,11 @@ var questions = [
 
 
 var introContainer = document.getElementsByClassName("intro-container");
-var introContainer = document.getElementsByClassName("wrapper");
+var wrapper = document.getElementsByClassName("wrapper");
 var highScores = document.getElementById("high-scores")
 var countdownDisplay = document.getElementById("countdown");
 var timer = document.getElementById("timer");
+var mainTitle = document.getElementById("main-heading");
 var introText = document.getElementById("intro");
 var question = document.getElementById("question");
 var startBtn = document.getElementById("start-btn");
@@ -54,13 +55,15 @@ var multiplChoice = document.getElementById("multiple-choice");
 
 function clearIntro() {
 
-    title.textContent = "";
+    mainTitle.textContent = "";
     introText.textContent = "";
     startBtn.remove();
-
 }
 
-function initQuiz() {
+function renderQuestions() {
+    chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
+    console.log(chosenQuestion);
+    question.textContent = chosenQuestion;
 
 }
 
@@ -73,5 +76,5 @@ var score = 0;
 
 startBtn.addEventListener("click", function () {
     clearIntro();
-    initQuiz();
+    // initQuiz();
 })
