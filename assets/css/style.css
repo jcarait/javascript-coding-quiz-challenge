@@ -1,3 +1,11 @@
+:root {
+    --dark: #13293d;
+    --light: #fff;
+    --yellow: rgba(240,230,140,1);
+    --orange: rgba(187,96,33,0.9542191876750701);
+    --lightblue: rgba(237,245,249,1)
+}
+
 * {
     box-sizing: border-box;
   }
@@ -81,6 +89,12 @@ li {
     transition-timing-function: linear;
     align-self: center;
   }
+
+  li:hover {
+      transform: scale(1.1);
+      color: var(--lightblue);
+  }
+  
 
 button {
     background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
