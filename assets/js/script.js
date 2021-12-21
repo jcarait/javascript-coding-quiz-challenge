@@ -1,22 +1,109 @@
-var highScores
+questions = [
+    {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }, {
+        question: "",
+        choiceA: "",
+        choiceB: "",
+        choiceC: "",
+        choiceD: "",
+    }]
+
+
+var introContainer = document.getElementsByClassName("intro-container");
+var introContainer = document.getElementsByClassName("wrapper");
+var highScores = document.getElementById("high-scores")
 var countdownDisplay = document.getElementById("countdown");
 var timer = document.getElementById("timer");
-var introContainer = document.getElementsByClassName("intro-container");
+var introText = document.getElementById("intro");
 var question = document.getElementById("question");
 var startBtn = document.getElementById("start-btn");
+var multiplChoice = document.getElementById("multiple-choice");
 
-// function init() {
-//     getHighScore();
-// }
+function clearIntro() {
 
+    title.textContent = "";
+    introText.textContent = "";
+    startBtn.remove();
 
+}
 
-startBtn.addEventListener("click", function() {
-    introContainer.innerHTML = "";
-} )
+function initQuiz() {
+
+}
 
 
 var timeLeft = 0;
 var timePenalty = 0;
 var score = 0;
 
+
+
+startBtn.addEventListener("click", function () {
+    clearIntro();
+    initQuiz();
+})
