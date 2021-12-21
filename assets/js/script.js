@@ -86,3 +86,13 @@ startBtn.addEventListener("click", function () {
     renderQnA();
     // initQuiz();
 })
+
+multiplChoice.addEventListener("click", function (event) {
+    var element = event.target;
+
+    if (element.matches("li")) {
+        // checkAnswer();
+        console.log("test");
+    }
+
+})
