@@ -60,11 +60,18 @@ function clearIntro() {
     startBtn.remove();
 }
 
-function renderQuestions() {
+function renderQnA() {
     chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
     console.log(chosenQuestion);
-    question.textContent = chosenQuestion;
-
+    question.textContent = chosenQuestion.question;
+    questionsArray = chosenQuestion.choices;
+    console.log(questionsArray)
+    
+    for (var i = 0; i < questionsArray.length; i++ ) {
+        var choice = document.createElement("li");
+        choice.innerHTML = questionsArray[i];
+        multiplChoice.appendChild(choice);
+    }
 }
 
 
@@ -76,5 +83,6 @@ var score = 0;
 
 startBtn.addEventListener("click", function () {
     clearIntro();
+    renderQnA();
     // initQuiz();
 })
