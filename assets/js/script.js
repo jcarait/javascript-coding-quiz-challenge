@@ -74,6 +74,10 @@ function renderQnA() {
     }
 }
 
+function checkAnswer() {
+    console.log(chosenAnswer);
+}
+
 
 var timeLeft = 0;
 var timePenalty = 0;
@@ -91,8 +95,7 @@ multiplChoice.addEventListener("click", function (event) {
     var element = event.target;
 
     if (element.matches("li")) {
-        // checkAnswer();
-        console.log("test");
+        checkAnswer();
     }
 
 })
