@@ -34,6 +34,7 @@ main {
 h1 {
     margin: 15px auto;
     font-weight: 700;
+    font-size: 2.5em;
 }
 
 h2 {
@@ -53,13 +54,18 @@ h4 {
     margin: 0 auto;
 }
 
+div {
+    margin: 0 auto;
+}
+
 ul {
     margin: 0 auto;
 }
 
 p {
     display: flex;
-    margin: 0 5px;
+    margin: 10 5px;
+    font-size: 20px;
 }
 
 .wrapper {
