@@ -13,19 +13,26 @@ function savePlayer () {
 };
 
 function displayPlayer () {
-    var storedPlayer = JSON.parse(localStorage.getItem("player"))
+    var player = JSON.parse(localStorage.getItem("player"));
 
-    for (var i = 0; )
+    console.log(player);
+
+    for (var i = 0; i < player.length; i++ ) {
+        var playerList = document.createElement("li")
+        playerList.innerHTML = trest;
+        displayhighScores.appendChild(playerList);
+    }
 
 }
 
 
 function submit() {
 
-submitHighScore = document.getElementById("submit-initials");
+    submitHighScore = document.getElementById("submit-initials");
 
-submitHighScore.addEventListener("click", function () {
+    submitHighScore.addEventListener("click", function () {
     savePlayer();
+   
 });
 }
 

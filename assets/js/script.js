@@ -3,6 +3,7 @@ var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementsByClassName("wrapper");
 var completeEl = document.getElementById("quiz-done");
 var highScores = document.getElementById("high-scores")
+var displayhighScores = document.getElementById("display-high-scores")
 var countdownDisplay = document.getElementById("countdown");
 var timerEl = document.getElementById("timer");
 var mainTitle = document.getElementById("main-heading");
