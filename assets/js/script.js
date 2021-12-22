@@ -53,6 +53,9 @@ var question = document.getElementById("question");
 var startBtn = document.getElementById("start-btn");
 var multiplChoice = document.getElementById("multiple-choice");
 
+var score = 0;
+var choseQuestion = "";
+
 function clearIntro() {
 
     mainTitle.textContent = "";
@@ -61,6 +64,9 @@ function clearIntro() {
 }
 
 function renderQnA() {
+
+    wrapper.innerHTML = "";
+
     chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
     console.log(chosenQuestion);
     question.textContent = chosenQuestion.question;
@@ -71,11 +77,20 @@ function renderQnA() {
         var choice = document.createElement("li");
         choice.innerHTML = questionsArray[i];
         multiplChoice.appendChild(choice);
+        multiplChoice.addEventListener("click", (checkAnswer));
     }
 }
 
-function checkAnswer() {
-    console.log(chosenAnswer);
+function checkAnswer(event) {
+    var element = event.target;
+
+    if (element.matches("li")) {
+
+        if (chosenQuestion.answer == element.textContent)
+        console.log("Correct! The answer is: " + chosenQuestion.answer);
+    } else {
+        console.log("Wrong! The answer is: " + chosenQuestion.answer);
+    }
 }
 
 
@@ -91,11 +106,4 @@ startBtn.addEventListener("click", function () {
     // initQuiz();
 })
 
-multiplChoice.addEventListener("click", function (event) {
-    var element = event.target;
 
-    if (element.matches("li")) {
-        checkAnswer();
-    }
-
-})
