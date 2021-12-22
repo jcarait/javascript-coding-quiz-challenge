@@ -54,7 +54,11 @@ var startBtn = document.getElementById("start-btn");
 var multiplChoice = document.getElementById("multiple-choice");
 
 var score = 0;
+var timeLeft = 0;
+var timePenalty = 0;
 var choseQuestion = "";
+var element;
+
 
 function clearIntro() {
 
@@ -77,28 +81,22 @@ function renderQnA() {
         var choice = document.createElement("li");
         choice.innerHTML = questionsArray[i];
         multiplChoice.appendChild(choice);
-        multiplChoice.addEventListener("click", (checkAnswer));
     }
 }
 
-function checkAnswer(event) {
+function checkAnswer() {
     var element = event.target;
+    
 
     if (element.matches("li")) {
 
-        if (chosenQuestion.answer == element.textContent)
+    if (chosenQuestion.answer == element.textContent) {
         console.log("Correct! The answer is: " + chosenQuestion.answer);
     } else {
         console.log("Wrong! The answer is: " + chosenQuestion.answer);
     }
+  }
 }
-
-
-var timeLeft = 0;
-var timePenalty = 0;
-var score = 0;
-
-
 
 startBtn.addEventListener("click", function () {
     clearIntro();
@@ -106,4 +104,5 @@ startBtn.addEventListener("click", function () {
     // initQuiz();
 })
 
+multiplChoice.addEventListener("click", (checkAnswer));
 
