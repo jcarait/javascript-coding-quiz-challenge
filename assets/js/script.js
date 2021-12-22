@@ -12,15 +12,14 @@ var startBtn = document.getElementById("start-btn");
 var multipleChoice = document.getElementById("multiple-choice");
 var feedback = document.getElementById("message");
 
-// score and timer variables
+//function variables
 var score = 0;
 var timeLeft = 0;
 var timePenalty = 0;
 var delay = 3000;
-
-
 var questionIndex = 0;
 var isGameOver = false;
+var quizCompleted;
 
 // clears the intro at beginning of quiz
 function clearIntro() {
@@ -65,13 +64,15 @@ function checkAnswer(event) {
             score = score + 100;
         } else {
             feedback.textContent = "Wrong!";
-            timeLeft = timeLeft - 5;
+            timeLeft = timeLeft-5;
         }
     }
 
     if (questionIndex === questions.length-1) {
         quizDone();
         isGameOver = true;
+
+        //'correct!' or 'wrong!' message is displayed for 0.75 seconds
         setTimeout(function () {
             feedback.textContent = "";
         }, 750)
@@ -88,19 +89,19 @@ function checkAnswer(event) {
 };
 
 
-// game timer
+// countdown timer
 function countdown() {
-    timeLeft = 60;
+    timeLeft = 5;
 
     var timeInterval = setInterval(function () {
 
         
 
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             clearInterval(timeInterval);
             timerEl.textContent = 0;
             quizDone();
-            
+            outOfTimeMsg();
         } else if (isGameOver && timeLeft > 0 ) {
             clearInterval(timeInterval);
             timerEl.textContent = 0;
@@ -111,11 +112,13 @@ function countdown() {
     }, 1000);
 }
 
+
+// display message, score and form
 function quizDone() {
     question.textContent = "";
     multipleChoice.innerHTML = "";
 
-    var quizCompleted = document.createElement("p");
+    quizCompleted = document.createElement("p");
     var totalScore = document.createElement("p");
     var formEl = document.createElement("form");
     var formLabel = document.createElement("label")
@@ -139,11 +142,10 @@ function quizDone() {
     formEl.appendChild(buttonEl);
 };
 
-
-
-
-
-
+//change message if player runs out of time
+function outOfTimeMsg() {
+    quizCompleted.textContent ="You ran out of time!";
+};
 
 // event listeners
 startBtn.addEventListener("click", function () {
