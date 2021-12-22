@@ -132,6 +132,7 @@ function quizDone() {
     
     formInput.setAttribute("type", "text");
     buttonEl.setAttribute("type", "button");
+    buttonEl.setAttribute("id", "submit-initials");
 
 
     completeEl.appendChild(quizCompleted);
