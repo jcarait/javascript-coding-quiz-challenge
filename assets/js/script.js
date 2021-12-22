@@ -71,7 +71,7 @@ function checkAnswer(event) {
 
     if (questionIndex === questions.length-1) {
         quizDone();
-
+        isGameOver = true;
         setTimeout(function () {
             feedback.textContent = "";
         }, 750)
@@ -96,16 +96,17 @@ function countdown() {
 
         
 
-        if (timeLeft > 0) {
-            timerEl.textContent = timeLeft;
-            timeLeft--;
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            timerEl.textContent = 0;
+            quizDone();
+            
         } else if (isGameOver && timeLeft > 0 ) {
             clearInterval(timeInterval);
             timerEl.textContent = 0;
         } else {
-            clearInterval(timeInterval);
-            timerEl.textContent = 0;
-            quizDone();
+            timerEl.textContent = timeLeft;
+            timeLeft--; 
         }
     }, 1000);
 }
