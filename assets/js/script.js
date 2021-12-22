@@ -41,7 +41,7 @@ var questions = [
         answer: "substr()"
     }]
 
-
+//All html element variables
 var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementsByClassName("wrapper");
 var highScores = document.getElementById("high-scores")
@@ -54,14 +54,15 @@ var startBtn = document.getElementById("start-btn");
 var multipleChoice = document.getElementById("multiple-choice");
 var feedback = document.getElementById("message");
 
+// score and timer variables
 var score = 0;
 var timeLeft = 0;
 var timePenalty = 0;
 
+
 var questionIndex = 0;
-var currentQuestion = "";
 
-
+// clears the intro at beginning of quiz
 function clearIntro() {
 
     mainTitle.textContent = "";
@@ -69,7 +70,7 @@ function clearIntro() {
     startBtn.remove();
 }
 
-
+// Questions and multiple choice answers appear on page
 function renderQnA() {
 
     question.textContent = "";
@@ -87,11 +88,11 @@ function renderQnA() {
         var choice = document.createElement("li");
         choice.innerHTML = questionsArray[i];
         multipleChoice.appendChild(choice); 
-    }
-    
-    
+    }  
 }
 
+
+//checks for answer
 function checkAnswer(event) {
     var element = event.target;
     
@@ -104,18 +105,12 @@ function checkAnswer(event) {
         feedback.textContent = "Wrong! The answer is: " + questions[questionIndex].answer;
     }
 
-    if (questionIndex >= questions.length) {
-        console.log("Quiz completed!")
-    } else {
-        renderQnA();
-        questionIndex++
-    }
   }
 }
 
 
 
-
+// event listeners
 startBtn.addEventListener("click", function () {
     clearIntro();
     renderQnA();
