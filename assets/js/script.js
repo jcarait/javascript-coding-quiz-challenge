@@ -56,8 +56,9 @@ var multiplChoice = document.getElementById("multiple-choice");
 var score = 0;
 var timeLeft = 0;
 var timePenalty = 0;
-var choseQuestion = "";
-var element;
+
+var questionIndex = 0;
+var currentQuestion = "";
 
 
 function clearIntro() {
@@ -67,33 +68,39 @@ function clearIntro() {
     startBtn.remove();
 }
 
+
 function renderQnA() {
 
     wrapper.innerHTML = "";
+    
+    var currentQuestion = questions[questionIndex];
 
-    chosenQuestion = questions[Math.floor(Math.random() * questions.length)];
-    console.log(chosenQuestion);
-    question.textContent = chosenQuestion.question;
-    questionsArray = chosenQuestion.choices;
+    
+    question.textContent = currentQuestion.question;
+ 
+
+    var questionsArray = currentQuestion.choices;
+
     console.log(questionsArray)
     
     for (var i = 0; i < questionsArray.length; i++ ) {
         var choice = document.createElement("li");
         choice.innerHTML = questionsArray[i];
-        multiplChoice.appendChild(choice);
+        multiplChoice.appendChild(choice); 
     }
+    
 }
 
-function checkAnswer() {
+function checkAnswer(event) {
     var element = event.target;
     
 
     if (element.matches("li")) {
 
-    if (chosenQuestion.answer == element.textContent) {
-        console.log("Correct! The answer is: " + chosenQuestion.answer);
+    if (questions[questionIndex].answer == element.textContent) {
+        console.log("Correct! The answer is: " + questions[questionIndex].answer);
     } else {
-        console.log("Wrong! The answer is: " + chosenQuestion.answer);
+        console.log("Wrong! The answer is: " + questions[questionIndex].answer);
     }
   }
 }
@@ -105,4 +112,5 @@ startBtn.addEventListener("click", function () {
 })
 
 multiplChoice.addEventListener("click", (checkAnswer));
+
 
