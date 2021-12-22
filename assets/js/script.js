@@ -51,7 +51,8 @@ var mainTitle = document.getElementById("main-heading");
 var introText = document.getElementById("intro");
 var question = document.getElementById("question");
 var startBtn = document.getElementById("start-btn");
-var multiplChoice = document.getElementById("multiple-choice");
+var multipleChoice = document.getElementById("multiple-choice");
+var feedback = document.getElementById("message");
 
 var score = 0;
 var timeLeft = 0;
@@ -71,7 +72,8 @@ function clearIntro() {
 
 function renderQnA() {
 
-    wrapper.innerHTML = "";
+    question.textContent = "";
+    multipleChoice.innerHTML = "";
     
     var currentQuestion = questions[questionIndex];
 
@@ -80,14 +82,13 @@ function renderQnA() {
  
 
     var questionsArray = currentQuestion.choices;
-
-    console.log(questionsArray)
     
     for (var i = 0; i < questionsArray.length; i++ ) {
         var choice = document.createElement("li");
         choice.innerHTML = questionsArray[i];
-        multiplChoice.appendChild(choice); 
+        multipleChoice.appendChild(choice); 
     }
+    
     
 }
 
@@ -98,12 +99,22 @@ function checkAnswer(event) {
     if (element.matches("li")) {
 
     if (questions[questionIndex].answer == element.textContent) {
-        console.log("Correct! The answer is: " + questions[questionIndex].answer);
+        feedback.textContent = "Correct! The answer is: " + questions[questionIndex].answer;
     } else {
-        console.log("Wrong! The answer is: " + questions[questionIndex].answer);
+        feedback.textContent = "Wrong! The answer is: " + questions[questionIndex].answer;
+    }
+
+    if (questionIndex >= questions.length) {
+        console.log("Quiz completed!")
+    } else {
+        renderQnA();
+        questionIndex++
     }
   }
 }
+
+
+
 
 startBtn.addEventListener("click", function () {
     clearIntro();
@@ -111,6 +122,6 @@ startBtn.addEventListener("click", function () {
     // initQuiz();
 })
 
-multiplChoice.addEventListener("click", (checkAnswer));
+multipleChoice.addEventListener("click", (checkAnswer));
 
 
