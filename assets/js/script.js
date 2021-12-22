@@ -3,7 +3,7 @@ var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementsByClassName("wrapper");
 var highScores = document.getElementById("high-scores")
 var countdownDisplay = document.getElementById("countdown");
-var timer = document.getElementById("timer");
+var timerEl = document.getElementById("timer");
 var mainTitle = document.getElementById("main-heading");
 var introText = document.getElementById("intro");
 var question = document.getElementById("question");
@@ -51,7 +51,7 @@ function renderQnA() {
 }
 
 
-//checks for answer
+//checks for answer and generates next question
 function checkAnswer(event) {
     var element = event.target;
     
@@ -63,6 +63,7 @@ function checkAnswer(event) {
         score = score+100;
     } else {
         feedback.textContent = "Wrong!";
+        timeLeft = timeLeft-5;
     }
   }
   questionIndex++;
@@ -76,6 +77,19 @@ function checkAnswer(event) {
 
 };
 
+function countdown () {
+    timeLeft = 60;
+
+    var timeInterval = setInterval(function () {
+        if (timeLeft > 0) {
+            timerEl.textContent = timeLeft;
+            timeLeft--;
+        } else {
+            clearInterval(timeInterval);
+        }
+    }, 1000);
+}
+
 
 
 
@@ -84,6 +98,7 @@ function checkAnswer(event) {
 startBtn.addEventListener("click", function () {
     clearIntro();
     renderQnA();
+    countdown();
     // initQuiz();
 });
 
