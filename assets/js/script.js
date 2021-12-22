@@ -1,4 +1,4 @@
-//All html element variables
+//html elements
 var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementsByClassName("wrapper");
 var completeEl = document.getElementById("quiz-done");
@@ -20,6 +20,8 @@ var delay = 3000;
 var questionIndex = 0;
 var isGameOver = false;
 var quizCompleted;
+
+
 
 // clears the intro at beginning of quiz
 function clearIntro() {
@@ -131,9 +133,9 @@ function quizDone() {
     buttonEl.textContent = "Submit";
     
     formInput.setAttribute("type", "text");
+    formInput.setAttribute("id", "input-initials");
     buttonEl.setAttribute("type", "button");
     buttonEl.setAttribute("id", "submit-initials");
-
 
     completeEl.appendChild(quizCompleted);
     completeEl.appendChild(totalScore);
@@ -141,6 +143,7 @@ function quizDone() {
     formEl.appendChild(formLabel);
     formEl.appendChild(formInput);
     formEl.appendChild(buttonEl);
+    submit();
 };
 
 //change message if player runs out of time
