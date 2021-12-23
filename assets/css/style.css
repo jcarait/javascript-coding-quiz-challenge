@@ -67,7 +67,7 @@ ol {
     margin: 20px auto;
     padding: 10px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
     list-style-type: decimal;
     font-size: 22px;
 }
