@@ -6,17 +6,6 @@ backBtn.addEventListener("click", function () {
 
 var player = [];
 
-    inputInitials = document.getElementById("input-initials");
-
-    var playerSummary = {
-        initials: inputInitials.value.trim(),
-        score: score
-    };
-
-    localStorage.setItem("player", JSON.stringify (playerSummary));
-    displayPlayer();
-
-function displayPlayer () {
     var player = JSON.parse(localStorage.getItem("player"));
 
     console.log(player);
@@ -26,8 +15,6 @@ function displayPlayer () {
         playerList.textContent = player[i].initials + "-" + player[i].score;
         displayhighScores.appendChild(playerList);
     }
-
-}
 
 
 

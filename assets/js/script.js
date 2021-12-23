@@ -166,8 +166,16 @@ function submit() {
     submitHighScore = document.getElementById("submit-initials");
 
     submitHighScore.addEventListener("click", function () {
+
+        inputInitials = document.getElementById("input-initials");
+
+        var playerSummary = {
+            initials: inputInitials.value.trim(),
+            score: score
+        };
+    
+        localStorage.setItem("player", JSON.stringify (playerSummary));
     window.location.replace("./highScores.html");
-    savePlayer();
    
 });
 }
