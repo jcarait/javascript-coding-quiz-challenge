@@ -179,16 +179,8 @@ function submit() {
         };
     
         localStorage.setItem("player", JSON.stringify (playerSummary));
+
     window.location.replace("./highScores.html");
    
 });
 }
-
-
-
-
-
-
-
-
-

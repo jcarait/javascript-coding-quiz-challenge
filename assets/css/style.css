@@ -112,7 +112,7 @@ p {
     align-self: center;
   }
 
-  li:hover {
+  #choices:hover {
       transform: scale(1.1);
       color: var(--lightblue);
   }
