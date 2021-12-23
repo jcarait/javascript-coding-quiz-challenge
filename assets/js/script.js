@@ -152,12 +152,27 @@ function outOfTimeMsg() {
     quizCompleted.textContent ="You ran out of time!";
 };
 
+
+
 // event listeners
 startBtn.addEventListener("click", function () {
     clearIntro();
     renderQnA();
     countdown();
 });
+
+function submit() {
+
+    submitHighScore = document.getElementById("submit-initials");
+
+    submitHighScore.addEventListener("click", function () {
+    window.location.replace("./highScores.html");
+    savePlayer();
+   
+});
+}
+
+
 
 
 

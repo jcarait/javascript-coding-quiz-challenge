@@ -1,6 +1,11 @@
+var backBtn = document.getElementById("back");
+
+backBtn.addEventListener("click", function () {
+    window.location.replace("./index.html");
+})
+
 var player = [];
 
-function savePlayer () {
     inputInitials = document.getElementById("input-initials");
 
     var playerSummary = {
@@ -10,7 +15,6 @@ function savePlayer () {
 
     localStorage.setItem("player", JSON.stringify (playerSummary));
     displayPlayer();
-};
 
 function displayPlayer () {
     var player = JSON.parse(localStorage.getItem("player"));
@@ -26,13 +30,5 @@ function displayPlayer () {
 }
 
 
-function submit() {
 
-    submitHighScore = document.getElementById("submit-initials");
-
-    submitHighScore.addEventListener("click", function () {
-    savePlayer();
-   
-});
-}
 
