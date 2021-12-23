@@ -9,6 +9,7 @@ var player;
 
 backBtn.addEventListener("click", function () {
     window.location.replace("./index.html");
+    localStorage.removeItem("player");
 })
 
 clearBtn.addEventListener("click", function () {
@@ -31,7 +32,7 @@ renderHighScore();
 
 function renderHighScore() {
    
-    
+    // || localStorage.getItem("player") !== null -- for later use if needed
     
     if (localStorage.getItem("highScores") !== null) {
         var storedScores = JSON.parse(localStorage.getItem("highScores"));
@@ -47,9 +48,10 @@ function renderHighScore() {
         }
 
         localStorage.setItem("highScores", JSON.stringify (highScores));
+     
 
 
-    } else {
+    }  else {
 
         var player = JSON.parse(localStorage.getItem("player"))
         playerData.push(player);
@@ -63,6 +65,7 @@ function renderHighScore() {
         }
 
         localStorage.setItem("highScores", JSON.stringify (highScores));
+        
     }
 
 }

@@ -135,6 +135,7 @@ function quizDone() {
     
     formInput.setAttribute("type", "text");
     formInput.setAttribute("id", "input-initials");
+    formInput.attributes.required = "required";
     buttonEl.setAttribute("type", "button");
     buttonEl.setAttribute("id", "submit-initials");
 
@@ -144,7 +145,13 @@ function quizDone() {
     formEl.appendChild(formLabel);
     formEl.appendChild(formInput);
     formEl.appendChild(buttonEl);
+
+    formEl.addEventListener("submit", function(event) {
+        event.preventDefault();
+    })
     submit();
+
+  
 };
 
 //change message if player runs out of time
@@ -161,6 +168,10 @@ startBtn.addEventListener("click", function () {
     countdown();
 });
 
+
+
+
+// save score to local storage and change to next page
 function submit() {
 
     submitHighScore = document.getElementById("submit-initials");
