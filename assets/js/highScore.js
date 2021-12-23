@@ -20,24 +20,20 @@ clearBtn.addEventListener("click", function () {
     localStorage.clear();
 })
 
-
-displayHighScores();
+displayHighScore();
 saveHighScores();
 
-function displayHighScores() {
+function displayHighScore() {
     var player = JSON.parse(localStorage.getItem("player"));
 
     playerData.push(player);
-    highScores.push(playerData);
-
-    console.log(playerData.length);
-
+    highScores.push(player);
+    
     for (var i = 0; i < playerData.length; i++) {
         var playerList = document.createElement("li")
         playerList.textContent = playerData[i].initials + " - " + playerData[i].score;
         displayhighScores.appendChild(playerList);
     };
-
 };
 
 function saveHighScores() {
@@ -45,14 +41,13 @@ function saveHighScores() {
 }
 
 function getHighScores () {
-    var storedHighScores = localStorage.getItem("highScores");
-    console.log(storedHighScores);
-        if (storedHighScores == null) {
-            return false;
-        }
+
+    if (!highScores) {
+        return false;
+    }
+    var storedHighScores = JSON.parse(localStorage.getItem("highScores"));
 
         storedHighScores = JSON.parse(storedHighScores);
-        console.log(storedHighScores);
 
         for (var i = 0; i < storedHighScores.length; i++) {
             var playerList = document.createElement("li")
@@ -60,14 +55,9 @@ function getHighScores () {
             displayhighScores.appendChild(playerList);
 
             highScores.push(storedHighScores[i]);
-            console.log(highScores)
+            
         };
+        saveHighScores();
 }
-
-
-
-
-
-
 
 getHighScores();
