@@ -58,8 +58,14 @@ div {
     margin: 0 auto;
 }
 
-ul {
+ul li {
     margin: 0 auto;
+}
+
+ol {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
 }
 
 p {
@@ -83,7 +89,7 @@ p {
 }
 
 
-li {
+#choices {
     background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
     border-radius: 8px;
     color: #13293d;

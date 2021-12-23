@@ -1,19 +1,25 @@
 var backBtn = document.getElementById("back");
+var displayhighScores = document.getElementById("display-high-scores")
 
 backBtn.addEventListener("click", function () {
     window.location.replace("./index.html");
 })
 
-var player = [];
+var playerData = [];   
 
     var player = JSON.parse(localStorage.getItem("player"));
 
-    console.log(player);
+    playerData.push(player);
 
-    for (var i = 0; i < player.length; i++ ) {
-        var playerList = document.createElement("li")
-        playerList.textContent = player[i].initials + "-" + player[i].score;
-        displayhighScores.appendChild(playerList);
+ 
+
+    console.log(playerData.length);
+
+
+    for (var i = 0; i < playerData.length; i++ ) {
+       var playerList = document.createElement("li")
+    playerList.textContent = playerData[i].initials + " - " + playerData[i].score; 
+    displayhighScores.appendChild(playerList);
     }
 
 

@@ -3,7 +3,6 @@ var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementsByClassName("wrapper");
 var completeEl = document.getElementById("quiz-done");
 var highScores = document.getElementById("high-scores")
-var displayhighScores = document.getElementById("display-high-scores")
 var countdownDisplay = document.getElementById("countdown");
 var timerEl = document.getElementById("timer");
 var mainTitle = document.getElementById("main-heading");
@@ -48,6 +47,7 @@ function renderQnA() {
 
     for (var i = 0; i < questionsArray.length; i++) {
         var choice = document.createElement("li");
+        choice.setAttribute("id", "choices");
         choice.innerHTML = questionsArray[i];
         multipleChoice.appendChild(choice);
     }
@@ -94,7 +94,7 @@ function checkAnswer(event) {
 
 // countdown timer
 function countdown() {
-    timeLeft = 5;
+    timeLeft = 60;
 
     var timeInterval = setInterval(function () {
 
@@ -169,6 +169,10 @@ function submit() {
 
         inputInitials = document.getElementById("input-initials");
 
+        inputInitials.addEventListener("enter", function() {
+            preventD
+        })
+
         var playerSummary = {
             initials: inputInitials.value.trim(),
             score: score
@@ -179,6 +183,8 @@ function submit() {
    
 });
 }
+
+
 
 
 
