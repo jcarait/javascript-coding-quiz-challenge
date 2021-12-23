@@ -4,8 +4,8 @@ function savePlayer () {
     inputInitials = document.getElementById("input-initials");
 
     var playerSummary = {
-        playerInitials: inputInitials.value.trim(),
-        playerScore: score
+        initials: inputInitials.value.trim(),
+        score: score
     };
 
     localStorage.setItem("player", JSON.stringify (playerSummary));
@@ -19,7 +19,7 @@ function displayPlayer () {
 
     for (var i = 0; i < player.length; i++ ) {
         var playerList = document.createElement("li")
-        playerList.innerHTML = trest;
+        playerList.textContent = player[i].initials + "-" + player[i].score;
         displayhighScores.appendChild(playerList);
     }
 
