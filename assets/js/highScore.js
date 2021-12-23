@@ -2,15 +2,24 @@ var backBtn = document.getElementById("back");
 var clearBtn = document.getElementById("clear");
 var displayhighScores = document.getElementById("display-high-scores")
 
+var playerList;
+
 backBtn.addEventListener("click", function () {
     window.location.replace("./index.html");
 })
 
+clearBtn.addEventListener("click", function () {
+    playerData = [];
+    storedHighScores = [];
+    playerList.textContent = ""
+    localStorage.clear();
+})
+
 var playerData = [];
+var highScores = [];
 
 var storedHighScores = JSON.parse(localStorage.getItem("highScores"))
 
-if (storedHighScores !== null) {
     var player = JSON.parse(localStorage.getItem("player"));
 
     playerData.push(player);
@@ -19,14 +28,25 @@ if (storedHighScores !== null) {
 
     console.log(playerData.length);
 
-displayScores(playerData)
-localStorage.setItem("highScores", JSON.stringify(playerData));
-    
-} else {
-    displayScores(storedHighScores);
-    saveHighScores();
-}
+    for (var i = 0; i < playerData.length; i++) {
+        var playerList = document.createElement("li")
+        playerList.textContent = playerData[i].initials + " - " + playerData[i].score;
+        displayhighScores.appendChild(playerList);
+    }
 
+    highScores.push(playerData);
+    
+    if (!storedHighScores) {
+    
+    for (var i = 0; i < storedHighScores.length; i++) {
+        var playerList = document.createElement("li")
+        playerList.textContent = storedHighScores[i].initials + " - " + storedHighScores[i].score;
+        displayhighScores.appendChild(playerList);
+    }
+
+    highScores.push(storedHighScores)
+
+    }
 
 
 function saveHighScores() {
@@ -35,11 +55,7 @@ function saveHighScores() {
 };
 
 function displayScores(storedData) {
-    for (var i = 0; i < storedData.length; i++) {
-        var playerList = document.createElement("li")
-        playerList.textContent = storedData[i].initials + " - " + storedData[i].score;
-        displayhighScores.appendChild(playerList);
-    }
+    
 }
 
 
