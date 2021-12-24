@@ -2,7 +2,6 @@
 var introContainer = document.getElementsByClassName("intro-container");
 var wrapper = document.getElementById("wrapper");
 var completeEl = document.getElementById("quiz-done");
-var highScores = document.getElementById("high-scores")
 var countdownDisplay = document.getElementById("countdown");
 var timerEl = document.getElementById("timer");
 var mainTitle = document.getElementById("main-heading");
@@ -63,6 +62,7 @@ function restoreIntro() {
         startBtn.style.display = "none"
     }
 
+    question.textContent = "";
     backBtn.remove();
     clearBtn.remove();
 }
@@ -197,6 +197,8 @@ function outOfTimeMsg() {
 
 startBtn.addEventListener("click", function () {
     clearIntro();
+    questionIndex = 0;
+    isGameOver = false;
     renderQnA();
     countdown();
 });
@@ -237,6 +239,7 @@ function createHighScoreEls () {
 
     backBtn.textContent = "Back";
     clearBtn.textContent = "Clear Highscores";
+    question.textContent = "High Scores";
 
     wrapper.appendChild(backBtn);
     wrapper.appendChild(clearBtn);
