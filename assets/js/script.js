@@ -1,6 +1,6 @@
 //html elements
 var introContainer = document.getElementsByClassName("intro-container");
-var wrapper = document.getElementsByClassName("wrapper");
+var wrapper = document.getElementById("wrapper");
 var completeEl = document.getElementById("quiz-done");
 var highScores = document.getElementById("high-scores")
 var countdownDisplay = document.getElementById("countdown");
@@ -26,6 +26,9 @@ var displayhighScores = document.getElementById("display-high-scores")
 
 var backBtn;
 var clearBtn;
+var playerData = [];
+var highScores = [];
+var player;
 
 //function variables
 var score = 0;
@@ -43,13 +46,22 @@ function clearIntro() {
 
     mainTitle.textContent = "";
     introText.textContent = "";
-    startBtn.remove();
+
+    if (startBtn.style.display === "none") {
+        startBtn.style.display  = "block"
+    } else {
+        startBtn.style.display = "none"
+    }
 }
 
 function restoreIntro() {
     mainTitle.textContent = "Coding Quiz Challenge";
     introText.textContent = "Try to answer the following code-related quiz within the time limit. Keep in mind that incorrect answers will penalise your timer by 5 seconds!";
-    startBtn.remove();
+    if (startBtn.style.display === none) {
+        startBtn.style.display  = "block"
+    } else {
+        startBtn.style.display = "none"
+    }
 }
 
 // Questions and multiple choice answers appear on page
@@ -119,8 +131,6 @@ function countdown() {
 
     var timeInterval = setInterval(function () {
 
-        
-
         if (timeLeft <= 0) {
             clearInterval(timeInterval);
             timerEl.textContent = 0;
@@ -161,7 +171,7 @@ function quizDone() {
     buttonEl.setAttribute("id", "submit-initials");
 
     completeEl.appendChild(quizCompleted);
-    completeEl.appendChild(totalScore);
+    completeEl.appendChild(displayTotalScore);
     completeEl.appendChild(formEl);
     formEl.appendChild(formLabel);
     formEl.appendChild(formInput);
@@ -169,28 +179,24 @@ function quizDone() {
 
     formEl.addEventListener("submit", function(event) {
         event.preventDefault();
-        submit();   
+         
     })
     
-
+    submit();  
   
 };
 
 //change message if player runs out of time
 function outOfTimeMsg() {
-    quizCompleted.textContent ="You ran out of time!";
+    quizCompleted.textContent = "You ran out of time!";
 };
 
 
-
-// event listeners
 startBtn.addEventListener("click", function () {
     clearIntro();
     renderQnA();
     countdown();
 });
-
-
 
 
 // save score to local storage and change to next page
@@ -212,6 +218,7 @@ function submit() {
         };
     
         localStorage.setItem("player", JSON.stringify (playerSummary));
+        createHighScoreEls();
         renderHighScore();
    
 });
@@ -225,6 +232,9 @@ function createHighScoreEls () {
     backBtn.setAttribute("id", "back");
     clearBtn.setAttribute("id", "clear")
 
+    backBtn.textContent = "Back";
+    clearBtn.textContent = "Clear Highscores";
+
     wrapper.appendChild(backBtn);
     wrapper.appendChild(clearBtn);
 
@@ -236,23 +246,13 @@ function createHighScoreEls () {
 
     
     backBtn.addEventListener("click", function () {
-            returnToStartMenu();
+            restoreIntro();
     })
 
     clearBtn.addEventListener("click", function () {
             clearHighScores();
     })
 }
-
-
-
-
-
-var playerData = [];
-var highScores = [];
-var player;
-
-
 
 function clearHighScores() {
     displayhighScores = document.querySelector("ol");
