@@ -20,8 +20,12 @@ var displayhighScores = document.getElementById("display-high-scores")
     var formLabel
     var formInput
     var buttonEl
+    
 
-// high score elements
+// high score variables
+
+var backBtn;
+var clearBtn;
 
 //function variables
 var score = 0;
@@ -39,6 +43,12 @@ function clearIntro() {
 
     mainTitle.textContent = "";
     introText.textContent = "";
+    startBtn.remove();
+}
+
+function restoreIntro() {
+    mainTitle.textContent = "Coding Quiz Challenge";
+    introText.textContent = "Try to answer the following code-related quiz within the time limit. Keep in mind that incorrect answers will penalise your timer by 5 seconds!";
     startBtn.remove();
 }
 
@@ -159,8 +169,9 @@ function quizDone() {
 
     formEl.addEventListener("submit", function(event) {
         event.preventDefault();
+        submit();   
     })
-    submit();
+    
 
   
 };
@@ -223,10 +234,18 @@ function createHighScoreEls () {
         }
     }
 
+    
+    backBtn.addEventListener("click", function () {
+            returnToStartMenu();
+    })
+
+    clearBtn.addEventListener("click", function () {
+            clearHighScores();
+    })
 }
 
-var backBtn = document.getElementById("back");
-var clearBtn = document.getElementById("clear");
+
+
 
 
 var playerData = [];
@@ -234,12 +253,8 @@ var highScores = [];
 var player;
 
 
-backBtn.addEventListener("click", function () {
-    
-})
 
-clearBtn.addEventListener("click", function () {
-
+function clearHighScores() {
     displayhighScores = document.querySelector("ol");
 
     if (displayhighScores) {
@@ -250,10 +265,7 @@ clearBtn.addEventListener("click", function () {
 
     highScores = [];
     localStorage.clear();
-    
-})
-
-
+}
 
 
 function renderHighScore() {

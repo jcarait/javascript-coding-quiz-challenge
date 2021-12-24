@@ -154,3 +154,7 @@ button {
     margin: 20px auto;
     border-top: var(--dark);
 }
+
+#start-btn {
+    display: block;
+}
