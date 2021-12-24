@@ -57,11 +57,14 @@ function clearIntro() {
 function restoreIntro() {
     mainTitle.textContent = "Coding Quiz Challenge";
     introText.textContent = "Try to answer the following code-related quiz within the time limit. Keep in mind that incorrect answers will penalise your timer by 5 seconds!";
-    if (startBtn.style.display === none) {
+    if (startBtn.style.display === "none") {
         startBtn.style.display  = "block"
     } else {
         startBtn.style.display = "none"
     }
+
+    backBtn.remove();
+    clearBtn.remove();
 }
 
 // Questions and multiple choice answers appear on page
@@ -246,7 +249,16 @@ function createHighScoreEls () {
 
     
     backBtn.addEventListener("click", function () {
-            restoreIntro();
+            
+        displayhighScores = document.querySelector("ol");
+
+    if (displayhighScores) {
+        while (displayhighScores.firstChild) {
+            displayhighScores.removeChild(displayhighScores.firstChild);
+        }
+    }
+        
+        restoreIntro();
     })
 
     clearBtn.addEventListener("click", function () {
